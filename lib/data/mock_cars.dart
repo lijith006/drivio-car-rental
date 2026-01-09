@@ -1,0 +1,58 @@
+import 'package:drivio_car_rental/models/car.dart';
+
+final mockCars = [
+  Car(
+    id: '1',
+    name: 'Toyota Innova',
+    pricePerDay: 2500,
+    image: 'assets/images/innova.png',
+    isAvailable: true,
+    transmission: 'Automatic',
+    seats: 7,
+  ),
+  Car(
+    id: '2',
+    name: 'Swift Dzire',
+    pricePerDay: 1800,
+    image: 'assets/images/swift1.png',
+    isAvailable: false,
+    transmission: 'Manual',
+    seats: 5,
+  ),
+  Car(
+    id: '2',
+    name: 'Ford Fiesta',
+    pricePerDay: 1800,
+    image: 'assets/images/fiesta.png',
+    isAvailable: true,
+    transmission: 'Manual',
+    seats: 5,
+  ),
+  Car(
+    id: '2',
+    name: 'Honda HRV',
+    pricePerDay: 1800,
+    image: 'assets/images/HRV.png',
+    isAvailable: true,
+    transmission: 'Automatic',
+    seats: 5,
+  ),
+  Car(
+    id: '2',
+    name: 'Ford Endevour',
+    pricePerDay: 1800,
+    image: 'assets/images/Endevour.png',
+    isAvailable: true,
+    transmission: 'Manual',
+    seats: 5,
+  ),
+  Car(
+    id: '2',
+    name: 'Honda City',
+    pricePerDay: 1800,
+    image: 'assets/images/city.png',
+    isAvailable: false,
+    transmission: 'Manual',
+    seats: 5,
+  ),
+];
