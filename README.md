@@ -10,10 +10,10 @@ The project is currently **in progress**.
 - Provider
 
 ## Current Status
-- Splash screen ✅
-- Login screen with validation ✅
-- Car listing ⏳
-- Booking flow ⏳
+- Splash screen 
+- Login screen with validation 
+- Car listing 
+- Booking flow 
 
 ## How to Run
 ```bash
