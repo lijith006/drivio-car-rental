@@ -14,11 +14,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailCtrl = TextEditingController();
   final passCtrl = TextEditingController();
 
-  // static const primaryColor = Color(0xFF8B1E1E);
-  // static const bgColor = Color(0xFFF4F5F7);
-  // static const inputBg = Color(0xFFF9FAFB);
-  // static const textColor = Color(0xFF1F2937);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(2),
                     child: ClipOval(
                       child: Image.asset(
                         'assets/logo/logo2.png',

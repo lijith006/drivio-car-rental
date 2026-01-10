@@ -60,13 +60,19 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/images/innova.png
-   - assets/images/swift1.png
-   - assets/images/swift.png
+   - assets/images/innova.jpg
+   - assets/images/innova1.jpg
+   - assets/images/innova6.png
+   - assets/images/creta.jpg
+   - assets/images/Fortuner.jpg
 
-   - assets/images/city.png
+   
+   - assets/images/swift1.png
+   - assets/images/accord.jpg
+
+   - assets/images/civic.jpg
    - assets/images/HRV.png
-   - assets/images/fiesta.png
+   - assets/images/figo.png
    - assets/images/Endevour.png
    - assets/logo/logo1.png
    - assets/logo/logo2.png

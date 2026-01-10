@@ -21,11 +21,16 @@ class BookingProvider extends ChangeNotifier {
     final total = days * selectedCar!.pricePerDay;
 
     booking = Booking(
+      id: 'DRV-${DateTime.now().millisecondsSinceEpoch}',
+      createdAt: DateTime.now(),
       name: name,
       startDate: start,
       endDate: end,
       location: location,
       totalPrice: total,
+
+      days: days,
+      car: selectedCar!,
     );
     notifyListeners();
   }
