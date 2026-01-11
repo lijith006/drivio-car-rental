@@ -12,7 +12,7 @@ The project is currently **in progress**.
 - Book a car with date & location
 - Booking confirmation summary
 
-- 
+  
 ## Tech Stack
 - Flutter
 - Dart
