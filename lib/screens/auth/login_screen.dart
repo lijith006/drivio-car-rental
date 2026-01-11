@@ -1,6 +1,9 @@
 import 'package:drivio_car_rental/core/constants/app_colors.dart';
+import 'package:drivio_car_rental/providers/auth_provider.dart';
+import 'package:drivio_car_rental/utils/app_snackbar.dart';
+import 'package:drivio_car_rental/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
-import '../../app/routes.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -28,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 const SizedBox(height: 24),
 
-                // LOGO
+                //Logo
                 Container(
                   width: 156,
                   height: 156,
@@ -56,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 const SizedBox(height: 36),
 
-                // FORM CARD
+                //Form card
                 Container(
                   padding: const EdgeInsets.all(22),
                   decoration: BoxDecoration(
@@ -93,31 +96,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(
                         width: double.infinity,
                         height: 52,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.primaryColor,
-                            foregroundColor: Colors.white,
-                            elevation: 4,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                          ),
+                        child: PrimaryButton(
+                          label: 'Login',
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              Navigator.pushReplacementNamed(
+                              context.read<AuthProvider>().login();
+                              AppSnackBar.show(
                                 context,
-                                Routes.cars,
+                                'Logged in successfully',
+                                backgroundColor: Colors.green.shade700,
                               );
                             }
                           },
-                          child: const Text(
-                            'Login',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 0.3,
-                            ),
-                          ),
                         ),
                       ),
                     ],

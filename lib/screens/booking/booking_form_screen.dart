@@ -1,6 +1,9 @@
 import 'package:drivio_car_rental/screens/booking/booking_form_card.dart';
+import 'package:drivio_car_rental/utils/app_snackbar.dart';
+import 'package:drivio_car_rental/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../providers/booking_provider.dart';
 import '../../app/routes.dart';
 import '../../core/constants/app_colors.dart';
@@ -14,21 +17,16 @@ class BookingFormScreen extends StatefulWidget {
 }
 
 class _BookingFormScreenState extends State<BookingFormScreen> {
-  final nameCtrl = TextEditingController();
-  final locCtrl = TextEditingController();
-
-  DateTime? start;
-  DateTime? end;
-
-  int get totalDays {
-    if (start == null || end == null) return 0;
-    return end!.difference(start!).inDays + 1;
-  }
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    final booking = Provider.of<BookingProvider>(context);
+    final booking = context.watch<BookingProvider>();
     final car = booking.selectedCar!;
+
+    final totalDays = booking.startDate != null && booking.endDate != null
+        ? booking.endDate!.difference(booking.startDate!).inDays + 1
+        : 0;
 
     final totalPrice = totalDays * car.pricePerDay;
 
@@ -46,56 +44,57 @@ class _BookingFormScreenState extends State<BookingFormScreen> {
           children: [
             Expanded(
               child: SingleChildScrollView(
-                child: BookingFormCard(
-                  nameCtrl: nameCtrl,
-                  locCtrl: locCtrl,
-                  start: start,
-                  end: end,
-                  onStartPick: () async {
-                    start = await _pickDate(context);
-                    setState(() {});
-                  },
-                  onEndPick: () async {
-                    end = await _pickDate(context);
-                    setState(() {});
-                  },
-                  totalDays: totalDays,
-                  totalPrice: totalPrice,
+                child: Form(
+                  key: _formKey,
+                  child: BookingFormCard(
+                    nameCtrl: booking.nameCtrl,
+                    locCtrl: booking.locationCtrl,
+                    start: booking.startDate,
+                    end: booking.endDate,
+                    onStartPick: () async {
+                      final date = await _pickDate(context);
+                      if (date != null && booking.endDate != null) {
+                        booking.setDates(date, booking.endDate!);
+                      } else if (date != null) {
+                        booking.startDate = date;
+                        booking.notifyListeners();
+                      }
+                    },
+                    onEndPick: () async {
+                      final date = await _pickDate(context);
+                      if (date != null && booking.startDate != null) {
+                        booking.setDates(booking.startDate!, date);
+                      } else if (date != null) {
+                        booking.endDate = date;
+                        booking.notifyListeners();
+                      }
+                    },
+                    totalDays: totalDays,
+                    totalPrice: totalPrice,
+                  ),
                 ),
               ),
             ),
 
-            /// Button for confirm booking
+            /// Confirm booking button
             SizedBox(
               width: double.infinity,
               height: AppDimens.buttonHeight,
-              child: ElevatedButton(
-                onPressed: start != null && end != null
+              child: PrimaryButton(
+                label: 'CONFIRM BOOKING',
+                onPressed: booking.isFormValid
                     ? () {
-                        booking.createBooking(
-                          name: nameCtrl.text,
-                          start: start!,
-                          end: end!,
-                          location: locCtrl.text,
+                        if (!_formKey.currentState!.validate()) return;
+
+                        booking.createBooking();
+                        AppSnackBar.show(
+                          context,
+                          'Booking confirmed successfully',
+                          backgroundColor: Colors.green,
                         );
                         Navigator.pushNamed(context, Routes.confirmation);
                       }
                     : null,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryColor,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(AppDimens.radius),
-                  ),
-                ),
-                child: const Text(
-                  'CONFIRM BOOKING',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1,
-                  ),
-                ),
               ),
             ),
           ],

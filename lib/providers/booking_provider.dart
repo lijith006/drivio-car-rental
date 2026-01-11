@@ -6,32 +6,64 @@ class BookingProvider extends ChangeNotifier {
   Car? selectedCar;
   Booking? booking;
 
+  final TextEditingController nameCtrl = TextEditingController();
+  final TextEditingController locationCtrl = TextEditingController();
+
+  DateTime? startDate;
+  DateTime? endDate;
+
   void selectCar(Car car) {
     selectedCar = car;
     notifyListeners();
   }
 
-  void createBooking({
-    required String name,
-    required DateTime start,
-    required DateTime end,
-    required String location,
-  }) {
-    final days = end.difference(start).inDays;
+  void setDates(DateTime start, DateTime end) {
+    startDate = start;
+    endDate = end;
+    notifyListeners();
+  }
+
+  bool get isFormValid {
+    return selectedCar != null &&
+        nameCtrl.text.trim().isNotEmpty &&
+        locationCtrl.text.trim().isNotEmpty &&
+        startDate != null &&
+        endDate != null;
+  }
+
+  // Booking creation
+
+  void createBooking() {
+    if (!isFormValid) return;
+
+    final days = _calculateRentalDays(startDate!, endDate!);
     final total = days * selectedCar!.pricePerDay;
 
     booking = Booking(
       id: 'DRV-${DateTime.now().millisecondsSinceEpoch}',
       createdAt: DateTime.now(),
-      name: name,
-      startDate: start,
-      endDate: end,
-      location: location,
-      totalPrice: total,
-
+      name: nameCtrl.text.trim(),
+      startDate: startDate!,
+      endDate: endDate!,
+      location: locationCtrl.text.trim(),
       days: days,
+      totalPrice: total,
       car: selectedCar!,
     );
+
     notifyListeners();
+  }
+
+  // Rental day calculation
+  int _calculateRentalDays(DateTime start, DateTime end) {
+    final diff = end.difference(start).inDays;
+    return diff <= 0 ? 1 : diff;
+  }
+
+  @override
+  void dispose() {
+    nameCtrl.dispose();
+    locationCtrl.dispose();
+    super.dispose();
   }
 }

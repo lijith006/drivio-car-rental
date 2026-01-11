@@ -1,16 +1,16 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-class PrimaryButton extends StatelessWidget {
-  final String text;
-  final VoidCallback? onPressed;
+// class PrimaryButton extends StatelessWidget {
+//   final String text;
+//   final VoidCallback? onPressed;
 
-  const PrimaryButton({required this.text, this.onPressed});
+//   const PrimaryButton({required this.text, this.onPressed});
 
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(onPressed: onPressed, child: Text(text)),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(
+//       width: double.infinity,
+//       child: ElevatedButton(onPressed: onPressed, child: Text(text)),
+//     );
+//   }
+// }

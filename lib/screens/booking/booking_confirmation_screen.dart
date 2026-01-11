@@ -1,4 +1,5 @@
 import 'package:drivio_car_rental/utils/date_utils.dart';
+import 'package:drivio_car_rental/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/booking_provider.dart';
@@ -126,12 +127,8 @@ class BookingConfirmationScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 height: 52,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                  ),
+                child: PrimaryButton(
+                  label: 'Back to Home',
                   onPressed: () {
                     Navigator.pushNamedAndRemoveUntil(
                       context,
@@ -139,10 +136,6 @@ class BookingConfirmationScreen extends StatelessWidget {
                       (_) => false,
                     );
                   },
-                  child: const Text(
-                    'Back to Home',
-                    style: TextStyle(fontSize: 16),
-                  ),
                 ),
               ),
             ],

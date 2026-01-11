@@ -1,3 +1,5 @@
+import 'package:drivio_car_rental/widgets/primary_button.dart';
+import 'package:drivio_car_rental/widgets/spec_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -93,12 +95,12 @@ class CarDetailScreen extends StatelessWidget {
                           // Specification card
                           Row(
                             children: [
-                              _SpecCard(
+                              SpecCard(
                                 title: 'Transmission',
                                 value: car.transmission,
                               ),
                               const SizedBox(width: 12),
-                              _SpecCard(title: 'Seats', value: '${car.seats}'),
+                              SpecCard(title: 'Seats', value: '${car.seats}'),
                             ],
                           ),
 
@@ -108,79 +110,17 @@ class CarDetailScreen extends StatelessWidget {
                     ),
                   ),
 
-                  // Fixed book now button
-                  SizedBox(
-                    width: double.infinity,
-                    height: AppDimens.buttonHeight,
-                    child: ElevatedButton(
-                      onPressed: car.isAvailable
-                          ? () => Navigator.pushNamed(context, Routes.booking)
-                          : null,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primaryColor,
-                        foregroundColor: AppColors.textColorWhite,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(AppDimens.radius),
-                        ),
-                        elevation: 4,
-                      ),
-                      child: const Text(
-                        'BOOK NOW',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 1,
-                        ),
-                      ),
-                    ),
+                  PrimaryButton(
+                    label: 'BOOK NOW',
+                    onPressed: car.isAvailable
+                        ? () => Navigator.pushNamed(context, Routes.booking)
+                        : null,
                   ),
                 ],
               ),
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-//specification card
-class _SpecCard extends StatelessWidget {
-  final String title;
-  final String value;
-
-  const _SpecCard({required this.title, required this.value});
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 14),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(AppDimens.radius),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.05),
-              blurRadius: 8,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Column(
-          children: [
-            Text(title, style: TextStyle(fontSize: 12, color: AppColors.grey)),
-            const SizedBox(height: 6),
-            Text(
-              value,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: AppColors.textColor,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

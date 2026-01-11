@@ -2,7 +2,9 @@ import 'package:drivio_car_rental/core/constants/app_colors.dart';
 import 'package:drivio_car_rental/core/constants/app_dimens.dart';
 import 'package:drivio_car_rental/core/widgets/app_date_field.dart';
 import 'package:drivio_car_rental/core/widgets/app_input_field.dart';
+import 'package:drivio_car_rental/utils/validators.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class BookingFormCard extends StatelessWidget {
   final TextEditingController nameCtrl;
@@ -47,13 +49,25 @@ class BookingFormCard extends StatelessWidget {
             controller: nameCtrl,
             label: 'Full Name',
             icon: Icons.person_outline,
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]')),
+            ],
+            validator: (value) =>
+                Validators.onlyLetters(value, fieldName: 'Full name'),
           ),
+
           const SizedBox(height: 16),
           AppInputField(
             controller: locCtrl,
             label: 'Pickup Location',
             icon: Icons.location_on_outlined,
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]')),
+            ],
+            validator: (value) =>
+                Validators.onlyLetters(value, fieldName: 'Pickup location'),
           ),
+
           const SizedBox(height: 20),
 
           Row(
