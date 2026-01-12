@@ -30,20 +30,6 @@ This structure keeps the codebase readable, scalable, and suitable for an MVP-le
 
 ---
 
-## Project Structure
-lib/
-├── app/ # App setup and routing
-├── core/ # App constants (colors, text styles, dimensions)
-├── data/ # Mock data sources
-├── models/ # Data models
-├── providers/ # State management (Provider)
-├── screens/ # Feature-based UI screens
-├── utils/ # Helper utilities and validators
-├── widgets/ # Reusable UI components
-└── main.dart # App entry point
-
-
----
 
 ## Tech Stack
 - Flutter
