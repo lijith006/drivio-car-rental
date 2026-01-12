@@ -4,8 +4,14 @@ class Car {
   final double pricePerDay;
   final String image;
   final bool isAvailable;
+
   final String transmission;
   final int seats;
+
+  final String fuelType;
+  final double mileage;
+  final String carType;
+  final int modelYear;
 
   Car({
     required this.id,
@@ -15,5 +21,9 @@ class Car {
     required this.isAvailable,
     required this.transmission,
     required this.seats,
+    required this.fuelType,
+    required this.mileage,
+    required this.carType,
+    required this.modelYear,
   });
 }

@@ -13,6 +13,7 @@ class BookingProvider extends ChangeNotifier {
   DateTime? endDate;
 
   void selectCar(Car car) {
+    clearForm();
     selectedCar = car;
     notifyListeners();
   }
@@ -20,6 +21,16 @@ class BookingProvider extends ChangeNotifier {
   void setDates(DateTime start, DateTime end) {
     startDate = start;
     endDate = end;
+    notifyListeners();
+  }
+
+  void setStartDate(DateTime date) {
+    startDate = date;
+    notifyListeners();
+  }
+
+  void setEndDate(DateTime date) {
+    endDate = date;
     notifyListeners();
   }
 
@@ -58,6 +69,24 @@ class BookingProvider extends ChangeNotifier {
   int _calculateRentalDays(DateTime start, DateTime end) {
     final diff = end.difference(start).inDays;
     return diff <= 0 ? 1 : diff;
+  }
+
+  void clearForm() {
+    nameCtrl.clear();
+    locationCtrl.clear();
+    startDate = null;
+    endDate = null;
+    notifyListeners();
+  }
+
+  void clearAll() {
+    nameCtrl.clear();
+    locationCtrl.clear();
+    startDate = null;
+    endDate = null;
+    booking = null;
+    selectedCar = null;
+    notifyListeners();
   }
 
   @override

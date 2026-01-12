@@ -1,10 +1,10 @@
+import 'package:drivio_car_rental/screens/booking/booking_form_screen.dart';
 import 'package:drivio_car_rental/widgets/primary_button.dart';
 import 'package:drivio_car_rental/widgets/spec_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/booking_provider.dart';
-import '../../app/routes.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_dimens.dart';
 
@@ -19,7 +19,7 @@ class CarDetailScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.carImageBg,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.transperent,
         elevation: 0,
         foregroundColor: AppColors.textColor,
       ),
@@ -49,7 +49,7 @@ class CarDetailScreen extends StatelessWidget {
             ),
           ),
 
-          // Details section
+          // Bottom details section
           Expanded(
             child: Container(
               padding: const EdgeInsets.all(AppDimens.padding),
@@ -61,6 +61,7 @@ class CarDetailScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
+                  // Scrollable content
                   Expanded(
                     child: SingleChildScrollView(
                       physics: const BouncingScrollPhysics(),
@@ -92,7 +93,6 @@ class CarDetailScreen extends StatelessWidget {
 
                           const SizedBox(height: 20),
 
-                          // Specification card
                           Row(
                             children: [
                               SpecCard(
@@ -103,17 +103,50 @@ class CarDetailScreen extends StatelessWidget {
                               SpecCard(title: 'Seats', value: '${car.seats}'),
                             ],
                           ),
+                          const SizedBox(height: 16),
 
-                          const SizedBox(height: 24),
+                          Row(
+                            children: [
+                              SpecCard(title: 'Fuel', value: car.fuelType),
+                              const SizedBox(width: 12),
+                              SpecCard(
+                                title: 'Mileage',
+                                value: '${car.mileage} km/l',
+                              ),
+                            ],
+                          ),
+
+                          const SizedBox(height: 16),
+
+                          Row(
+                            children: [
+                              SpecCard(title: 'Car Type', value: car.carType),
+                              const SizedBox(width: 12),
+                              SpecCard(
+                                title: 'Model Year',
+                                value: car.modelYear.toString(),
+                              ),
+                            ],
+                          ),
+
+                          const SizedBox(height: 40),
                         ],
                       ),
                     ),
                   ),
 
+                  // Fixed bottom button
                   PrimaryButton(
                     label: 'BOOK NOW',
                     onPressed: car.isAvailable
-                        ? () => Navigator.pushNamed(context, Routes.booking)
+                        ? () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const BookingFormScreen(),
+                              ),
+                            );
+                          }
                         : null,
                   ),
                 ],

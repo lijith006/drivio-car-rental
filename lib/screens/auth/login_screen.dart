@@ -98,6 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 52,
                         child: PrimaryButton(
                           label: 'Login',
+
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               context.read<AuthProvider>().login();

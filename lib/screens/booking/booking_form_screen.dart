@@ -1,3 +1,4 @@
+import 'package:drivio_car_rental/screens/booking/booking_confirmation_screen.dart';
 import 'package:drivio_car_rental/screens/booking/booking_form_card.dart';
 import 'package:drivio_car_rental/utils/app_snackbar.dart';
 import 'package:drivio_car_rental/widgets/primary_button.dart';
@@ -5,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/booking_provider.dart';
-import '../../app/routes.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_dimens.dart';
 
@@ -56,8 +56,9 @@ class _BookingFormScreenState extends State<BookingFormScreen> {
                       if (date != null && booking.endDate != null) {
                         booking.setDates(date, booking.endDate!);
                       } else if (date != null) {
-                        booking.startDate = date;
-                        booking.notifyListeners();
+                        // booking.startDate = date;
+                        // booking.notifyListeners();
+                        booking.setStartDate(date);
                       }
                     },
                     onEndPick: () async {
@@ -65,8 +66,9 @@ class _BookingFormScreenState extends State<BookingFormScreen> {
                       if (date != null && booking.startDate != null) {
                         booking.setDates(booking.startDate!, date);
                       } else if (date != null) {
-                        booking.endDate = date;
-                        booking.notifyListeners();
+                        // booking.endDate = date;
+                        // booking.notifyListeners();
+                        booking.setEndDate(date);
                       }
                     },
                     totalDays: totalDays,
@@ -92,7 +94,14 @@ class _BookingFormScreenState extends State<BookingFormScreen> {
                           'Booking confirmed successfully',
                           backgroundColor: Colors.green,
                         );
-                        Navigator.pushNamed(context, Routes.confirmation);
+                        // Navigator.pushNamed(context, Routes.confirmation);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const BookingConfirmationScreen(),
+                          ),
+                        );
                       }
                     : null,
               ),

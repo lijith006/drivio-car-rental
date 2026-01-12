@@ -46,15 +46,21 @@ class LogoutConfirmationDialog extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            context.read<AuthProvider>().logout();
+            final parentContext = Navigator.of(context).context;
+
             Navigator.pop(context);
 
-            AppSnackBar.show(
-              context,
-              'Logged out successfully',
-              backgroundColor: Colors.green.shade700,
-            );
+            parentContext.read<AuthProvider>().logout();
+
+            Future.delayed(const Duration(milliseconds: 300), () {
+              AppSnackBar.show(
+                parentContext,
+                'Logged out successfully',
+                backgroundColor: Colors.green.shade700,
+              );
+            });
           },
+
           child: const Text('Logout'),
         ),
       ],

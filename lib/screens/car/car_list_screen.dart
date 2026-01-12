@@ -1,10 +1,10 @@
+import 'package:drivio_car_rental/screens/car/car_detail_screen.dart';
 import 'package:drivio_car_rental/widgets/logout_confirmation_dialogue.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/car_provider.dart';
 import '../../providers/booking_provider.dart';
-import '../../app/routes.dart';
 import '../../core/constants/app_colors.dart';
 import '../../widgets/car_card.dart';
 
@@ -19,7 +19,12 @@ class CarListScreen extends StatelessWidget {
       backgroundColor: AppColors.bgColor,
 
       appBar: AppBar(
+        backgroundColor: AppColors.bgColor,
         title: const Text('Available Cars'),
+        scrolledUnderElevation: 0,
+        elevation: 0,
+        surfaceTintColor: Colors.transparent,
+
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
@@ -44,7 +49,7 @@ class CarListScreen extends StatelessWidget {
                 hintText: 'Search cars',
                 prefixIcon: const Icon(Icons.search),
                 filled: true,
-                fillColor: const Color(0xFFF1F3F6),
+                fillColor: AppColors.inputBg,
                 contentPadding: const EdgeInsets.symmetric(vertical: 14),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
@@ -73,7 +78,12 @@ class CarListScreen extends StatelessWidget {
                             listen: false,
                           ).selectCar(car);
 
-                          Navigator.pushNamed(context, Routes.carDetail);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const CarDetailScreen(),
+                            ),
+                          );
                         },
                       );
                     },

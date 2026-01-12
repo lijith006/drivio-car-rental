@@ -9,6 +9,10 @@ final mockCars = [
     isAvailable: true,
     transmission: 'Automatic',
     seats: 7,
+    fuelType: 'Diesel',
+    mileage: 12.5,
+    carType: 'MPV',
+    modelYear: 2022,
   ),
   Car(
     id: '2',
@@ -18,6 +22,11 @@ final mockCars = [
     isAvailable: true,
     transmission: 'Automatic',
     seats: 7,
+
+    fuelType: 'Diesel',
+    mileage: 11,
+    carType: 'SUV',
+    modelYear: 2020,
   ),
 
   Car(
@@ -28,6 +37,11 @@ final mockCars = [
     isAvailable: false,
     transmission: 'Manual',
     seats: 5,
+
+    fuelType: 'Petrol',
+    mileage: 19.5,
+    carType: 'Hatchback',
+    modelYear: 2017,
   ),
   Car(
     id: '4',
@@ -37,6 +51,11 @@ final mockCars = [
     isAvailable: true,
     transmission: 'Manual',
     seats: 5,
+
+    fuelType: 'Diesel',
+    mileage: 19.5,
+    carType: 'CSUV',
+    modelYear: 2020,
   ),
   Car(
     id: '5',
@@ -46,6 +65,11 @@ final mockCars = [
     isAvailable: true,
     transmission: 'Manual',
     seats: 5,
+
+    fuelType: 'Petrol',
+    mileage: 12.5,
+    carType: 'Sedan',
+    modelYear: 2018,
   ),
   Car(
     id: '6',
@@ -55,6 +79,11 @@ final mockCars = [
     isAvailable: true,
     transmission: 'Manual',
     seats: 5,
+
+    fuelType: 'Diesel',
+    mileage: 23.5,
+    carType: 'Hatchback',
+    modelYear: 2019,
   ),
   Car(
     id: '7',
@@ -64,6 +93,11 @@ final mockCars = [
     isAvailable: true,
     transmission: 'Automatic',
     seats: 5,
+
+    fuelType: 'Diesel',
+    mileage: 18.5,
+    carType: 'CSUV',
+    modelYear: 2022,
   ),
   Car(
     id: '8',
@@ -73,6 +107,11 @@ final mockCars = [
     isAvailable: true,
     transmission: 'Manual',
     seats: 5,
+
+    fuelType: 'Diesel',
+    mileage: 14.5,
+    carType: 'SUV',
+    modelYear: 2022,
   ),
   Car(
     id: '9',
@@ -82,5 +121,10 @@ final mockCars = [
     isAvailable: false,
     transmission: 'Manual',
     seats: 5,
+
+    fuelType: 'Petrol',
+    mileage: 10,
+    carType: 'Hatchback',
+    modelYear: 2018,
   ),
 ];
