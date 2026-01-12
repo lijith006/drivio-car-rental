@@ -1,25 +1,63 @@
-# Drivio – Car Rental App
+# Drivio – Car Rental Booking App
 
-## Description
-Flutter-based car rental booking application developed as a machine task.
-The project is currently **in progress**.
+## Overview
+Drivio is a simple multi-screen Car Rental Booking application built using Flutter as part of a technical assignment.  
+The app follows an **MVP-style product approach (Minimum Viable Product)** and focuses on clean code, proper folder structure, and clear state management without overengineering.
 
+No backend is used — all data is mocked locally as per the task requirements.
+
+---
 
 ## Features
-- Mock login (no backend)
-- Browse available cars
-- View car details
-- Book a car with date & location
-- Booking confirmation summary
+- Mock login (no backend authentication)
+- Browse available cars using mock data
+- View car details including pricing and specifications
+- Book a car by entering name, dates, and pickup location
+- Booking confirmation screen with summary details
 
-  
+---
+
+## Architecture & State Management
+The project uses a **feature-based layered architecture** with **Provider (ChangeNotifier)** for state management.
+
+- **Screens** handle only UI and user interaction
+- **Providers** manage application state and business logic
+- **Models** define data structures
+- **Mock data** is used as the local data source
+- **Reusable widgets** and constants are extracted to maintain clean and consistent UI
+
+This structure keeps the codebase readable, scalable, and suitable for an MVP-level application.
+
+---
+
+## Project Structure
+lib/
+├── app/ # App setup and routing
+├── core/ # App constants (colors, text styles, dimensions)
+├── data/ # Mock data sources
+├── models/ # Data models
+├── providers/ # State management (Provider)
+├── screens/ # Feature-based UI screens
+├── utils/ # Helper utilities and validators
+├── widgets/ # Reusable UI components
+└── main.dart # App entry point
+
+
+---
+
 ## Tech Stack
 - Flutter
 - Dart
-- Provider
+- Provider (ChangeNotifier)
 
+---
 
-## How to run
-1. Clone the repo
-2. flutter pub get
-3. flutter run
+## How to Run the App
+1. Clone the repository  
+2. Run `flutter pub get`  
+3. Run `flutter run`
+
+---
+
+## Notes
+This project was built to demonstrate Flutter fundamentals, clean code practices, state management using Provider, and a well-structured multi-screen application flow.
