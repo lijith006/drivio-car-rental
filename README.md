@@ -45,5 +45,3 @@ This structure keeps the codebase readable, scalable, and suitable for an MVP-le
 
 ---
 
-## Notes
-This project was built to demonstrate Flutter fundamentals, clean code practices, state management using Provider, and a well-structured multi-screen application flow.
