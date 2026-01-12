@@ -1,3 +1,4 @@
+import 'package:drivio_car_rental/core/constants/app_colors.dart';
 import 'package:drivio_car_rental/utils/date_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +12,7 @@ class BookingConfirmationScreen extends StatelessWidget {
     final booking = Provider.of<BookingProvider>(context).booking!;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F6FA),
+      backgroundColor: AppColors.bgColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(

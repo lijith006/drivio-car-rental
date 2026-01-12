@@ -66,9 +66,10 @@ class BookingProvider extends ChangeNotifier {
   }
 
   // Rental day calculation
+
   int _calculateRentalDays(DateTime start, DateTime end) {
     final diff = end.difference(start).inDays;
-    return diff <= 0 ? 1 : diff;
+    return diff + 1;
   }
 
   void clearForm() {
