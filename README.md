@@ -2,7 +2,7 @@
 
 ## Overview
 Drivio is a simple multi-screen Car Rental Booking application built using Flutter as part of a technical assignment.  
-The app follows an **MVP-style product approach (Minimum Viable Product)** and focuses on clean code, proper folder structure, and clear state management without overengineering.
+The app follows an **MVP-style product approach (Minimum Viable Product)** and focuses on clean code, proper folder structure, and clear state management 
 
 No backend is used — all data is mocked locally as per the task requirements.
 
